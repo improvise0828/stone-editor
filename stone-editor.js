@@ -19,45 +19,61 @@ function stone_editor_init(el,opt){
     content.addEventListener('focusout',()=>{is_focus = false});
     const html_content = el.querySelector('.stone-html-content');
     html_content.addEventListener('keyup',clone_html_content);
-    const heading_btns = el.querySelectorAll('.stone-heading');
-    for(let i=0; i<heading_btns.length; i++){
-        heading_btns[i].addEventListener('click', heading)
+    if(opt.heading != false){
+        const heading_btns = el.querySelectorAll('.stone-heading');
+        for(let i=0; i<heading_btns.length; i++){
+            heading_btns[i].addEventListener('click', heading)
+        }
     }
-    const font_size_btns = el.querySelectorAll('.stone-font-size');
-    for(let i=0; i<font_size_btns.length; i++){
-        font_size_btns[i].addEventListener('click', font_size)
+    if(opt.font_size != false){
+        const font_size_btns = el.querySelectorAll('.stone-font-size');
+        for(let i=0; i<font_size_btns.length; i++){
+            font_size_btns[i].addEventListener('click', font_size)
+        }
     }
-    const color_input = el.querySelector('.stone-color-input');
-    const color_btn = el.querySelector('.stone-color');
-    color_btn.addEventListener('click',color);
-    color_btn.querySelector('i').style.color = color_input.value;
-    const hilite_btn = el.querySelector('.stone-hilite');
-    hilite_btn.addEventListener('click',hilite);
-    hilite_btn.querySelector('i').style.color = color_input.value;
-    const bold_btn = el.querySelector('.stone-bold');
-    bold_btn.addEventListener('click',bold);
-    const italic_btn = el.querySelector('.stone-italic');
-    italic_btn.addEventListener('click',italic);
-    const underline_btn = el.querySelector('.stone-underline');
-    underline_btn.addEventListener('click',underline);
-    const stroke_btn = el.querySelector('.stone-stroke');
-    stroke_btn.addEventListener('click',stroke);
-    const unorderd_list_btn = el.querySelector('.stone-ul');
-    unorderd_list_btn.addEventListener('click',unorderdList)
-    const orderd_list_btn = el.querySelector('.stone-ol');
-    orderd_list_btn.addEventListener('click',orderdList);
-    const align_btns = el.querySelectorAll('.stone-align');
-    for(let i=0; i<align_btns.length; i++){
-        align_btns[i].addEventListener('click', align)
+    if(opt.color != false){
+        const color_input = el.querySelector('.stone-color-input');
+        const color_btn = el.querySelector('.stone-color');
+        color_btn.addEventListener('click',color);
+        color_btn.querySelector('i').style.color = color_input.value;
+        const hilite_btn = el.querySelector('.stone-hilite');
+        hilite_btn.addEventListener('click',hilite);
+        hilite_btn.querySelector('i').style.color = color_input.value;
     }
-    const link_btn = el.querySelector('.stone-link');
-    link_btn.addEventListener('click',link);
-    const image_btn = el.querySelector('.stone-image');
-    image_btn.addEventListener('click',stone_image_input_create);
-    const video_btn = el.querySelector('.stone-video');
-    video_btn.addEventListener('click',video);
-    const html_check = el.querySelector('.stone-html-check');
-    html_check.addEventListener('click',html_edit);
+    if(opt.font_style != false){
+        const bold_btn = el.querySelector('.stone-bold');
+        bold_btn.addEventListener('click',bold);
+        const italic_btn = el.querySelector('.stone-italic');
+        italic_btn.addEventListener('click',italic);
+        const underline_btn = el.querySelector('.stone-underline');
+        underline_btn.addEventListener('click',underline);
+        const stroke_btn = el.querySelector('.stone-stroke');
+        stroke_btn.addEventListener('click',stroke);
+    }
+    if(opt.list != false){
+        const unorderd_list_btn = el.querySelector('.stone-ul');
+        unorderd_list_btn.addEventListener('click',unorderdList)
+        const orderd_list_btn = el.querySelector('.stone-ol');
+        orderd_list_btn.addEventListener('click',orderdList);
+    }
+    if(opt.align != false){
+        const align_btns = el.querySelectorAll('.stone-align');
+        for(let i=0; i<align_btns.length; i++){
+            align_btns[i].addEventListener('click', align)
+        }
+    }
+    if(opt.attachment != false){
+        const link_btn = el.querySelector('.stone-link');
+        link_btn.addEventListener('click',link);
+        const image_btn = el.querySelector('.stone-image');
+        image_btn.addEventListener('click',stone_image_input_create);
+        const video_btn = el.querySelector('.stone-video');
+        video_btn.addEventListener('click',video);
+    }
+    if(opt.html != false){
+        const html_check = el.querySelector('.stone-html-check');
+        html_check.addEventListener('click',html_edit);
+    }
 
     function heading(e) {
         let heading = e.currentTarget.dataset.heading;
@@ -250,187 +266,401 @@ function stone_editor_init(el,opt){
 
 function new_stone_editor(selector,opt = {}) {
     let el = document.querySelector(`${selector}`);
-    el.innerHTML = stone_editor_html;
+    let stone_responsive = ``;
+    if(opt.responsive != false){
+        stone_responsive = `stone-responsive`
+    }
+    let stone_editor_toobar = ``;
+    if(opt.heading != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_heading_group
+    }
+    if(opt.font_size != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_font_size_group
+    }
+    if(opt.color != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_color_group
+    }
+    if(opt.font_style != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_font_style_group
+    }
+    if(opt.list != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_list_group
+    }
+    if(opt.align != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_align_group
+    }
+    if(opt.attachment != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_attachment_group
+    }
+    if(opt.html != false){
+        stone_editor_toobar = stone_editor_toobar + stone_editor_html_group
+    }
+
+
+    const stone_editor_layout = `
+    <div class="stone-editor ${stone_responsive}">
+        <div class="stone-toolbar">${stone_editor_toobar}</div>
+        <div class="stone-content-wrap">
+            <div class="stone-content" contentEditable="true"></div>
+            <textarea class="stone-html-content stone-hide"></textarea>
+        </div>
+    </div>
+    <input class=stone-exit>`
+
+    el.innerHTML = stone_editor_layout;
     stone_editor_init(el,opt);
 }
 
-const stone_editor_html = `<div class="stone-editor">
-    <div class="stone-toolbar">
+const stone_editor_heading_group = `<span class="stone-btn stone-heading-group">
+    <button class="stone-pr2">
+        Heading
+        <svg viewBox="0 0 18 18">
+            <polygon points="7 11 9 13 11 11 7 11"></polygon>
+            <polygon points="7 7 9 5 11 7 7 7"></polygon>
+        </svg>
+    </button>
+    <ul class="stone-btn-list">
+        <li>
+            <span class="stone-btn">
+                <button class="stone-heading" data-heading="h1">
+                    <h1>Heading1</h1>
+                </button>
+            </span>
+        </li>
+        <li>
+            <span class="stone-btn">
+                <button class="stone-heading" data-heading="h2">
+                    <h2>Heading2</h2>
+                </button>
+            </span>
+        </li>
+        <li>
+            <span class="stone-btn">
+                <button class="stone-heading" data-heading="h3">
+                    <h3>Heading3</h3>
+                </button>
+            </span>
+        </li>
+        <li>
+            <span class="stone-btn">
+                <button class="stone-heading" data-heading="h4">
+                    <h4>Heading4</h4>
+                </button>
+            </span>
+        </li>
+        <li>
+            <span class="stone-btn">
+                <button class="stone-heading" data-heading="h5">
+                    <h5>Heading5</h5>
+                </button>
+            </span>
+        </li>
+        <li>
+            <span class="stone-btn">
+                <button class="stone-heading" data-heading="h6">
+                    <h6>Heading6</h6>
+                </button>
+            </span>
+        </li>
+    </ul>
+</span>`
+const stone_editor_font_size_group = `<span class="stone-btn stone-font-size-group">
+<button class="stone-pr2">
+    Font size
+    <svg viewBox="0 0 18 18">
+        <polygon points="7 11 9 13 11 11 7 11"></polygon>
+        <polygon points="7 7 9 5 11 7 7 7"></polygon>
+    </svg>
+</button>
+<ul class="stone-btn-list">
+    <li>
         <span class="stone-btn">
-            <button class="stone-pr2">
-                Heading
-                <svg viewBox="0 0 18 18">
-                    <polygon points="7 11 9 13 11 11 7 11"></polygon>
-                    <polygon points="7 7 9 5 11 7 7 7"></polygon>
-                </svg>
+            <button class="stone-font-size" data-font-size="2.5rem">
+                <span style="font-size:2.5rem">2.5rem</span>
             </button>
-            <ul class="stone-btn-list">
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-heading" data-heading="h1">
-                            <h1>Heading1</h1>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-heading" data-heading="h2">
-                            <h2>Heading2</h2>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-heading" data-heading="h3">
-                            <h3>Heading3</h3>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-heading" data-heading="h4">
-                            <h4>Heading4</h4>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-heading" data-heading="h5">
-                            <h5>Heading5</h5>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-heading" data-heading="h6">
-                            <h6>Heading6</h6>
-                        </button>
-                    </span>
-                </li>
-            </ul>
         </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-pr2">
-                Font size
-                <svg viewBox="0 0 18 18">
-                    <polygon points="7 11 9 13 11 11 7 11"></polygon>
-                    <polygon points="7 7 9 5 11 7 7 7"></polygon>
-                </svg>
+            <button class="stone-font-size" data-font-size="2rem">
+                <span style="font-size:2rem">2rem</span>
             </button>
-            <ul class="stone-btn-list">
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-font-size" data-font-size="2.5rem">
-                            <span style="font-size:2.5rem">2.5rem</span>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-font-size" data-font-size="2rem">
-                            <span style="font-size:2rem">2rem</span>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-font-size" data-font-size="1.75rem">
-                            <span style="font-size:1.75rem">1.75rem</span>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-font-size" data-font-size="1.5rem">
-                            <span style="font-size:1.5rem">1.5rem</span>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-font-size" data-font-size="1.25rem">
-                            <span style="font-size:1.25rem">1.25rem</span>
-                        </button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-font-size" data-font-size="1rem">
-                            <span style="font-size:1rem">1rem</span>
-                        </button>
-                    </span>
-                </li>
-            </ul>
         </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-color" title="글자색"><i class="fas fa-font"></i></button>
+            <button class="stone-font-size" data-font-size="1.75rem">
+                <span style="font-size:1.75rem">1.75rem</span>
+            </button>
         </span>
-        <span class="stone-btn stone-flex">
-            <input type="color" class="stone-color-input" value="#444444">
-        </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-hilite" title="배경색"><i class="fas fa-fill-drip"></i></button>
+            <button class="stone-font-size" data-font-size="1.5rem">
+                <span style="font-size:1.5rem">1.5rem</span>
+            </button>
         </span>
-        <span class="stone-btn stone-flex">
-            <input type="color" class="stone-hilite-input" value="#444444">
-        </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-bold" title="굵게"><i class="fas fa-bold"></i></button>
+            <button class="stone-font-size" data-font-size="1.25rem">
+                <span style="font-size:1.25rem">1.25rem</span>
+            </button>
         </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-italic" title="기울임"><i class="fas fa-italic"></i></button>
+            <button class="stone-font-size" data-font-size="1rem">
+                <span style="font-size:1rem">1rem</span>
+            </button>
         </span>
+    </li>
+</ul>
+</span>`
+const stone_editor_color_group = `<span class="stone-btn stone-color-group">
+<button class="stone-color" title="글자색"><i class="fas fa-font"></i></button>
+</span>
+<span class="stone-btn stone-color-group stone-flex">
+<input type="color" class="stone-color-input" value="#444444">
+</span>
+<span class="stone-btn stone-color-group">
+<button class="stone-hilite" title="배경색"><i class="fas fa-fill-drip"></i></button>
+</span>
+<span class="stone-btn stone-color-group stone-flex">
+<input type="color" class="stone-hilite-input" value="#444444">
+</span>`
+const stone_editor_font_style_group = `<span class="stone-btn stone-font-style-group">
+<button class="stone-bold" title="굵게"><i class="fas fa-bold"></i></button>
+</span>
+<span class="stone-btn stone-font-style-group">
+<button class="stone-italic" title="기울임"><i class="fas fa-italic"></i></button>
+</span>
+<span class="stone-btn stone-font-style-group">
+<button class="stone-underline" title="밑줄"><i class="fas fa-underline"></i></button>
+</span>
+<span class="stone-btn stone-font-style-group">
+<button class="stone-stroke" title="취소선"><i class="fas fa-strikethrough"></i></button>
+</span>`
+const stone_editor_list_group = `<span class="stone-btn stone-list-group">
+<button class="stone-ul" title="순서없는 리스트"><i class="fas fa-list-ul"></i></button>
+</span>
+<span class="stone-btn stone-list-group">
+<button class="stone-ol" title="순서있는 리스트"><i class="fas fa-list-ol"></i></button>
+</span>`
+const stone_editor_align_group = `<span class="stone-btn stone-align-group">
+<button title="문단 정렬"><i class="fas fa-align-left"></i></button>
+<ul class="stone-btn-list">
+    <li>
         <span class="stone-btn">
-            <button class="stone-underline" title="밑줄"><i class="fas fa-underline"></i></button>
+            <button class="stone-align" data-align="left" title="왼쪽 정렬"><i
+                    class="fas fa-align-left"></i></button>
         </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-stroke" title="취소선"><i class="fas fa-strikethrough"></i></button>
+            <button class="stone-align" data-align="center" title="가운데 정렬"><i
+                    class="fas fa-align-center"></i></button>
         </span>
+    </li>
+    <li>
         <span class="stone-btn">
-            <button class="stone-ul" title="순서없는 리스트"><i class="fas fa-list-ul"></i></button>
+            <button class="stone-align" data-align="right" title="오른쪽 정렬"><i
+                    class="fas fa-align-right"></i></button>
         </span>
-        <span class="stone-btn">
-            <button class="stone-ol" title="순서있는 리스트"><i class="fas fa-list-ol"></i></button>
-        </span>
-        <span class="stone-btn">
-            <button title="문단 정렬"><i class="fas fa-align-left"></i></button>
-            <ul class="stone-btn-list">
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-align" data-align="left" title="왼쪽 정렬"><i
-                                class="fas fa-align-left"></i></button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-align" data-align="center" title="가운데 정렬"><i
-                                class="fas fa-align-center"></i></button>
-                    </span>
-                </li>
-                <li>
-                    <span class="stone-btn">
-                        <button class="stone-align" data-align="right" title="오른쪽 정렬"><i
-                                class="fas fa-align-right"></i></button>
-                    </span>
-                </li>
-            </ul>
-        </span>
-        <span class="stone-btn">
-            <button class="stone-link" title="링크"><i class="fas fa-link"></i></button>
-        </span>
-        <span class="stone-btn">
-            <button class="stone-image" title="이미지 삽입"><i class="far fa-image"></i></button>
-        </span>
-        <span class="stone-btn">
-            <button class="stone-video" title="동영상 링크 삽입"><i class="fas fa-film"></i></button>
-        </span>
-        <span class="stone-btn">
-            <button class="stone-html" title="HTML 편집"><label class="stone-html-check-label"><input type="checkbox" class="stone-html-check">HTML</label></button>
-        </span>
-    </div>
-    <div class="stone-content-wrap">
-        <div class="stone-content" contentEditable="true"></div>
-        <textarea class="stone-html-content stone-hide"></textarea>
-    </div>
-</div>
-<input class=stone-exit>`;
+    </li>
+</ul>
+</span>`
+const stone_editor_attachment_group = `<span class="stone-btn stone-attachment-group">
+<button class="stone-link" title="링크"><i class="fas fa-link"></i></button>
+</span>
+<span class="stone-btn stone-attachment-group">
+<button class="stone-image" title="이미지 삽입"><i class="far fa-image"></i></button>
+</span>
+<span class="stone-btn stone-attachment-group">
+<button class="stone-video" title="동영상 링크 삽입"><i class="fas fa-film"></i></button>
+</span>`
+const stone_editor_html_group = `<span class="stone-btn stone-html-group">
+<button class="stone-html" title="HTML 편집"><label class="stone-html-check-label"><input type="checkbox"
+            class="stone-html-check">HTML</label></button>
+</span>`
+
+// const stone_editor_html = `<div class="stone-editor">
+//     <div class="stone-toolbar">
+//         <span class="stone-btn stone-heading-group">
+//             <button class="stone-pr2">
+//                 Heading
+//                 <svg viewBox="0 0 18 18">
+//                     <polygon points="7 11 9 13 11 11 7 11"></polygon>
+//                     <polygon points="7 7 9 5 11 7 7 7"></polygon>
+//                 </svg>
+//             </button>
+//             <ul class="stone-btn-list">
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-heading" data-heading="h1">
+//                             <h1>Heading1</h1>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-heading" data-heading="h2">
+//                             <h2>Heading2</h2>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-heading" data-heading="h3">
+//                             <h3>Heading3</h3>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-heading" data-heading="h4">
+//                             <h4>Heading4</h4>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-heading" data-heading="h5">
+//                             <h5>Heading5</h5>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-heading" data-heading="h6">
+//                             <h6>Heading6</h6>
+//                         </button>
+//                     </span>
+//                 </li>
+//             </ul>
+//         </span>
+//         <span class="stone-btn stone-font-size-group">
+//             <button class="stone-pr2">
+//                 Font size
+//                 <svg viewBox="0 0 18 18">
+//                     <polygon points="7 11 9 13 11 11 7 11"></polygon>
+//                     <polygon points="7 7 9 5 11 7 7 7"></polygon>
+//                 </svg>
+//             </button>
+//             <ul class="stone-btn-list">
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-font-size" data-font-size="2.5rem">
+//                             <span style="font-size:2.5rem">2.5rem</span>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-font-size" data-font-size="2rem">
+//                             <span style="font-size:2rem">2rem</span>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-font-size" data-font-size="1.75rem">
+//                             <span style="font-size:1.75rem">1.75rem</span>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-font-size" data-font-size="1.5rem">
+//                             <span style="font-size:1.5rem">1.5rem</span>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-font-size" data-font-size="1.25rem">
+//                             <span style="font-size:1.25rem">1.25rem</span>
+//                         </button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-font-size" data-font-size="1rem">
+//                             <span style="font-size:1rem">1rem</span>
+//                         </button>
+//                     </span>
+//                 </li>
+//             </ul>
+//         </span>
+//         <span class="stone-btn stone-color-group">
+//             <button class="stone-color" title="글자색"><i class="fas fa-font"></i></button>
+//         </span>
+//         <span class="stone-btn stone-color-group stone-flex">
+//             <input type="color" class="stone-color-input" value="#444444">
+//         </span>
+//         <span class="stone-btn stone-color-group">
+//             <button class="stone-hilite" title="배경색"><i class="fas fa-fill-drip"></i></button>
+//         </span>
+//         <span class="stone-btn stone-color-group stone-flex">
+//             <input type="color" class="stone-hilite-input" value="#444444">
+//         </span>
+//         <span class="stone-btn stone-font-style-group">
+//             <button class="stone-bold" title="굵게"><i class="fas fa-bold"></i></button>
+//         </span>
+//         <span class="stone-btn stone-font-style-group">
+//             <button class="stone-italic" title="기울임"><i class="fas fa-italic"></i></button>
+//         </span>
+//         <span class="stone-btn stone-font-style-group">
+//             <button class="stone-underline" title="밑줄"><i class="fas fa-underline"></i></button>
+//         </span>
+//         <span class="stone-btn stone-font-style-group">
+//             <button class="stone-stroke" title="취소선"><i class="fas fa-strikethrough"></i></button>
+//         </span>
+//         <span class="stone-btn stone-list-group">
+//             <button class="stone-ul" title="순서없는 리스트"><i class="fas fa-list-ul"></i></button>
+//         </span>
+//         <span class="stone-btn stone-list-group">
+//             <button class="stone-ol" title="순서있는 리스트"><i class="fas fa-list-ol"></i></button>
+//         </span>
+//         <span class="stone-btn stone-align-group">
+//             <button title="문단 정렬"><i class="fas fa-align-left"></i></button>
+//             <ul class="stone-btn-list">
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-align" data-align="left" title="왼쪽 정렬"><i
+//                                 class="fas fa-align-left"></i></button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-align" data-align="center" title="가운데 정렬"><i
+//                                 class="fas fa-align-center"></i></button>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <span class="stone-btn">
+//                         <button class="stone-align" data-align="right" title="오른쪽 정렬"><i
+//                                 class="fas fa-align-right"></i></button>
+//                     </span>
+//                 </li>
+//             </ul>
+//         </span>
+//         <span class="stone-btn stone-attachment-group">
+//             <button class="stone-link" title="링크"><i class="fas fa-link"></i></button>
+//         </span>
+//         <span class="stone-btn stone-attachment-group">
+//             <button class="stone-image" title="이미지 삽입"><i class="far fa-image"></i></button>
+//         </span>
+//         <span class="stone-btn stone-attachment-group">
+//             <button class="stone-video" title="동영상 링크 삽입"><i class="fas fa-film"></i></button>
+//         </span>
+//         <span class="stone-btn stone-html-group">
+//             <button class="stone-html" title="HTML 편집"><label class="stone-html-check-label"><input type="checkbox" class="stone-html-check">HTML</label></button>
+//         </span>
+//     </div>
+//     <div class="stone-content-wrap">
+//         <div class="stone-content" contentEditable="true"></div>
+//         <textarea class="stone-html-content stone-hide"></textarea>
+//     </div>
+// </div>
+// <input class=stone-exit>`;

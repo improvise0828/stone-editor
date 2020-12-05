@@ -1,17 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <link rel="stylesheet" href="stone-editor.css">
-    <script src="stone-editor.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="stone-editor-demo1205.css">
+    <script src="stone-editor-demo1205.js"></script>
     <title>Stone editor</title>
+    <style>
+        .container{
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .m-0{
+            margin: 0;
+        }
+
+        .mb-1{
+            margin-bottom: 0.25rem;
+        }
+
+        .mb-5{
+            margin-bottom: 2rem;
+        }
+
+        .demo-box{
+            max-width: 800px;
+        }
+
+        .demo-box .stone-content,
+        .demo-box .stone-html-content{
+            min-height: 100px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="editor-div"></div>
+    <div class="container">
+        <h1 style="display: none;">stone editor</h1>
+        <h2>Stone editor</h2>
+        <p>데모 페이지의 가로 사이즈는 800px 입니다.</p>
+
+        <h4 class="m-0 mb-1">Default style</h4>
+        <div class="default-div mb-5"></div>
+
+        <h3>아래부터 min-hieght 100px로 조절, responsive:false</h3>
+
+        <div class="demo-box">
+            <h4 class="m-0 mb-1">Responsive false</h4>
+            <div class="responsive-div mb-5"></div>
+
+            <h4 class="m-0 mb-1">heading, font_size false</h4>
+            <div class="heading-size-div mb-5"></div>
+
+            <h4 class="m-0 mb-1">heading, font_size, color false</h4>
+            <div class="heading-size-color-div mb-5"></div>
+
+            <h4 class="m-0 mb-1">heading, font_size, color, html false</h4>
+            <div class="heading-size-color-html-div mb-5"></div>
+        </div>
+    </div>
+
+    
     <script>
-        new_stone_editor('.editor-div')
+        new_stone_editor('.default-div')
+        new_stone_editor('.responsive-div',{
+            responsive:false
+        })
+        new_stone_editor('.heading-size-div',{
+            responsive:false,
+            heading:false,
+            font_size:false
+        })
+        new_stone_editor('.heading-size-color-div',{
+            responsive:false,
+            heading:false,
+            font_size:false,
+            color:false
+        })
+        new_stone_editor('.heading-size-color-html-div',{
+            responsive:false,
+            heading:false,
+            font_size:false,
+            color:false,
+            html:false
+        })
     </script>
 </body>
+
 </html>
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+    

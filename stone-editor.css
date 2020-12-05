@@ -263,3 +263,23 @@
 .stone-html-check{
     margin-right: 4px;
 }
+
+@media (max-width:720px){
+    .stone-responsive .stone-html-group,
+    .stone-responsive .stone-color-group{
+        display: none !important;
+    }
+}
+
+@media (max-width:540px){
+    .stone-responsive .stone-heading-group,
+    .stone-responsive .stone-font-size-group{
+        display: none !important;
+    }
+}
+
+@media (max-width:320px){
+    .stone-responsive .stone-list-group{
+        display: none !important;
+    }
+}
