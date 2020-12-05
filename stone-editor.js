@@ -321,42 +321,42 @@ const stone_editor_html = `<div class="stone-editor">
                 <li>
                     <span class="stone-btn">
                         <button class="stone-font-size" data-font-size="2.5rem">
-                            <span style="font-size:2.5rem">font size <small>(2.5rem)</small></span>
+                            <span style="font-size:2.5rem">2.5rem</span>
                         </button>
                     </span>
                 </li>
                 <li>
                     <span class="stone-btn">
                         <button class="stone-font-size" data-font-size="2rem">
-                            <span style="font-size:2rem">font size <small>(2rem)</small></span>
+                            <span style="font-size:2rem">2rem</span>
                         </button>
                     </span>
                 </li>
                 <li>
                     <span class="stone-btn">
                         <button class="stone-font-size" data-font-size="1.75rem">
-                            <span style="font-size:1.75rem">font size <small>(1.75rem)</small></span>
+                            <span style="font-size:1.75rem">1.75rem</span>
                         </button>
                     </span>
                 </li>
                 <li>
                     <span class="stone-btn">
                         <button class="stone-font-size" data-font-size="1.5rem">
-                            <span style="font-size:1.5rem">font size <small>(1.5rem)</small></span>
+                            <span style="font-size:1.5rem">1.5rem</span>
                         </button>
                     </span>
                 </li>
                 <li>
                     <span class="stone-btn">
                         <button class="stone-font-size" data-font-size="1.25rem">
-                            <span style="font-size:1.25rem">font size <small>(1.25rem)</small></span>
+                            <span style="font-size:1.25rem">1.25rem</span>
                         </button>
                     </span>
                 </li>
                 <li>
                     <span class="stone-btn">
                         <button class="stone-font-size" data-font-size="1rem">
-                            <span style="font-size:1rem">font size <small>(1rem)</small></span>
+                            <span style="font-size:1rem">1rem</span>
                         </button>
                     </span>
                 </li>
@@ -365,13 +365,13 @@ const stone_editor_html = `<div class="stone-editor">
         <span class="stone-btn">
             <button class="stone-color" title="글자색"><i class="fas fa-font"></i></button>
         </span>
-        <span class="stone-btn">
+        <span class="stone-btn stone-flex">
             <input type="color" class="stone-color-input" value="#444444">
         </span>
         <span class="stone-btn">
             <button class="stone-hilite" title="배경색"><i class="fas fa-fill-drip"></i></button>
         </span>
-        <span class="stone-btn">
+        <span class="stone-btn stone-flex">
             <input type="color" class="stone-hilite-input" value="#444444">
         </span>
         <span class="stone-btn">

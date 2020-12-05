@@ -55,7 +55,9 @@
     background-color: #fff;
     border-bottom: 1px solid #dfdfdf;
     padding: 5px;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .stone-toolbar * {
@@ -168,10 +170,17 @@
     left: -1px;
 }
 
+.stone-flex{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .stone-color-input,
 .stone-hilite-input {
     display: inline-block;
     width: 30px;
+    height: 1.2rem;
     padding: 1px;
     border: 1px solid #eee;
     border-radius: 2px;
@@ -252,7 +261,5 @@
 }
 
 .stone-html-check{
-    position: relative;
-    top: 1px;
     margin-right: 4px;
 }
