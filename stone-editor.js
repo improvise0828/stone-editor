@@ -363,7 +363,7 @@ const stone_editor_html = `<div class="stone-editor">
             </ul>
         </span>
         <span class="stone-btn">
-            <button class="stone-color" title="글자색"><i class="far fa-font"></i></button>
+            <button class="stone-color" title="글자색"><i class="fas fa-font"></i></button>
         </span>
         <span class="stone-btn">
             <input type="color" class="stone-color-input" value="#444444">
