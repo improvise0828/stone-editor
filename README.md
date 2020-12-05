@@ -9,7 +9,7 @@ es6 문법으로 작성된 가벼운기능의 에디터입니다.
 스톤에디터의 버튼아이콘은 fontawesome에 의존성을 가지고있습니다.
 [Fontawesome](https://fontawesome.com/)의 스타일시트를 html에 포함해주세요.
 
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" integrity="시크릿키" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" integrity="시크릿키" crossorigin="anonymous">
 
 
 
