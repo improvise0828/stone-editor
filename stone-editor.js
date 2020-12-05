@@ -238,7 +238,10 @@ function stone_editor_init(el,opt){
             url = url.replace("https://youtu.be/", "https://www.youtube.com/embed/");
             url = url.replace("watch?v=", "embed/");
             url = url.replace('https://vimeo.com', 'https://player.vimeo.com/video');
-            document.execCommand('insertHTML', false, `<iframe title="video player" src="${url}" width="560" frameborder="0" height="315" allowfullscreen="true"></iframe>`);
+            if(is_focus == false){
+                content.focus();
+            }
+            document.execCommand('insertHTML', false, `<iframe title="video player" src="${url}" frameborder="0" allowfullscreen="true" onload="calc_stone_iframe_height(this)"></iframe>`);
         }
     }
 
@@ -261,8 +264,23 @@ function stone_editor_init(el,opt){
             html_content.classList.add('stone-hide');
         }
     }
+
+    window.addEventListener('resize',calc_all_stone_iframe_height)
 }
 
+function calc_all_stone_iframe_height(){
+    const stone_editors = document.querySelectorAll('.stone-editor');
+    for(let i=0; i<stone_editors.length; i++){
+        const iframes = stone_editors[i].querySelectorAll('iframe');
+        for(let j=0; j<iframes.length; j++){
+            iframes[j].style.height = (iframes[j].offsetWidth * 0.5625) + 'px';
+        }
+    }
+}
+
+function calc_stone_iframe_height(e){
+    e.style.height = (e.offsetWidth * 0.5625) + 'px';
+}
 
 function new_stone_editor(selector,opt = {}) {
     let el = document.querySelector(`${selector}`);
