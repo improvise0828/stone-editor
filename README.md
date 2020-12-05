@@ -2,9 +2,16 @@
 es6 문법으로 작성된 가벼운기능의 에디터입니다.
 스톤에디터는 에디터 생성 명령어와 파라미터 두개면 충분합니다.
 
+스톤에디터의 버튼아이콘은 fontawesome에 의존성을 가지고있습니다.
+Link: [Fontawesome](https://fontawesome.com/)
+fontawsome의 스타일시트를 html에 포함해주세요.
+
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" integrity="시크릿키" crossorigin="anonymous">
+
 ## 시작하기
 누구나 사용할 수 있고 쉽게 분석할 수 있도록 압축하지 않은 파일을 제공합니다.
 다운로드하여 사용해주세요.
+
 
 ## 적용하기
 스톤에디터는 new_stone_editor 메소드 하나만 가지고 있습니다.
