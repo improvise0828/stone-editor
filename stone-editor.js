@@ -208,19 +208,16 @@ function stone_editor_init(el,opt){
     function image_alt_edit(e){
         const old_textarea = document.querySelector('.stone-image-alt');
         old_textarea && old_textarea.remove();
-        let posX = e.clientX;
-        let posY = e.clientY;
         if(e.target.tagName === 'IMG'){
             e.target.classList.add('stone-alt-editing')
             let textarea = document.createElement('textarea');
             textarea.setAttribute('class','stone-image-alt');
             textarea.setAttribute('placeholder','이미지 설명글');
-            textarea.setAttribute('style',`top:${posY}px; left:${posX}px`);
             textarea.innerText = e.target.alt;
             textarea.addEventListener('focusout',image_alt_change)
             textarea.addEventListener('keydown',image_alt_auto_height)
             textarea.addEventListener('keyup',image_alt_auto_height)
-            document.body.appendChild(textarea);
+            e.target.after(textarea);
             let textarea_height = textarea.scrollHeight;
             textarea.style.height = textarea_height + 'px';
             textarea.focus()

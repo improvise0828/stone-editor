@@ -241,8 +241,9 @@
 
 .stone-image-alt {
     display: block;
-    position: fixed;
-    min-width: 240px;
+    position: relative;
+    top: -0.5rem;
+    width: 100%;
     font-size: 1rem;
     font-weight: 400;
     padding: 8px;
