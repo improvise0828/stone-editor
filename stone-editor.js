@@ -223,7 +223,8 @@ function stone_editor_init(el,opt){
             document.body.appendChild(textarea);
             let textarea_height = textarea.scrollHeight;
             textarea.style.height = textarea_height + 'px';
-            textarea.focus();
+            textarea.focus()
+            textarea.setSelectionRange(textarea.value.length, textarea.value.length);
         }
     }
 
