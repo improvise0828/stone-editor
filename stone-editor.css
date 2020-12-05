@@ -1,0 +1,254 @@
+/* style tools */
+.stone-hide {
+    display: none !important;
+}
+
+.stone-ml {
+    margin-left: 15px !important;
+}
+
+.stone-ml2 {
+    margin-left: 30px !important;
+}
+
+.stone-mr {
+    margin-right: 15px !important;
+}
+
+.stone-mr2 {
+    margin-right: 30px !important;
+}
+
+.stone-pl {
+    padding-left: 15px !important;
+}
+
+.stone-pl2 {
+    padding-left: 30px !important;
+}
+
+.stone-pr {
+    padding-right: 15px !important;
+}
+
+.stone-pr2 {
+    padding-right: 30px !important;
+}
+
+/* default style */
+.stone-editor {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #fff;
+    position: relative;
+}
+
+.stone-content-wrap {
+    position: relative;
+}
+
+.stone-toolbar {
+    background-color: #fff;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 5px;
+    display: block;
+}
+
+.stone-toolbar * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.stone-toolbar>* {
+    font-size: 0.9rem;
+}
+
+.stone-btn {
+    display: inline-block;
+    position: relative;
+}
+
+.stone-btn,
+.stone-btn * {
+    background-color: #fff;
+    border: none;
+    color: #444;
+}
+
+.stone-btn i {
+    font-size: 0.9rem;
+}
+
+.stone-btn button {
+    padding: 6px 8px;
+    cursor: pointer;
+}
+
+.stone-btn button:active,
+.stone-btn button:focus {
+    outline: none;
+}
+
+.stone-toolbar>.stone-btn>button *,
+.stone-toolbar>.stone-btn>button {
+    transition: 0.3s;
+}
+
+.stone-toolbar>.stone-btn.active>button,
+.stone-toolbar>.stone-btn.active>button *,
+.stone-toolbar>.stone-btn:hover>button,
+.stone-toolbar>.stone-btn:hover>button * {
+    transition: 0.2s;
+    background-color: #f0f0f0;
+}
+
+.stone-toolbar>.stone-btn:active>button,
+.stone-toolbar>.stone-btn:active>button * {
+    background-color: #dedede;
+}
+
+.stone-btn button:hover *,
+.stone-btn button:active *,
+.stone-btn button:focus * {
+    color: #5629ee;
+}
+
+.stone-btn svg {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    width: 16px;
+}
+
+.stone-stroke {
+    fill: none;
+    stroke: #444;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+}
+
+.stone-btn:hover .stone-btn-list {
+    display: block;
+}
+
+.stone-btn-list {
+    position: absolute;
+    display: none;
+    list-style: none;
+    padding: 0 !important;
+    z-index: 1;
+    background-color: transparent !important;
+}
+
+.stone-btn-list>li {
+    width: fit-content;
+}
+
+.stone-btn-list .stone-btn {
+    border-radius: 2px;
+    border: 1px solid #dfdfdf;
+}
+
+.stone-btn-list .stone-btn button {
+    margin: 0;
+}
+
+.stone-btn.active .stone-btn-list {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -1px;
+}
+
+.stone-color-input,
+.stone-hilite-input {
+    display: inline-block;
+    width: 30px;
+    padding: 1px;
+    border: 1px solid #eee;
+    border-radius: 2px;
+}
+
+.stone-editor img {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.stone-editor iframe {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.stone-exit {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border: none;
+}
+
+.stone-editor,
+.stone-toolbar,
+.stone-content {
+    border-radius: 4px;
+}
+
+.stone-content {
+    outline: none;
+    padding: 10px;
+    min-height: 240px;
+}
+
+.stone-html-content{
+    border: none;
+    border-top: 1px solid #eee;
+    outline: none;
+    background-color: #fcfcfc;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    min-height: 200px;
+    resize: vertical;
+    position: sticky;
+    bottom: 0;
+}
+
+.stone-content:active,
+.stone-content:focus {
+    outline: none;
+}
+
+.stone-image-alt {
+    display: block;
+    position: fixed;
+    min-width: 240px;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    resize: auto;
+}
+
+.stone-image-alt::placeholder {
+    color: #495057;
+}
+
+.stone-html label{
+    display: inline-flex;
+    align-items: center;
+}
+
+.stone-html-check{
+    position: relative;
+    top: 1px;
+    margin-right: 4px;
+}
