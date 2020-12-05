@@ -70,8 +70,9 @@ function stone_editor_init(el,opt){
         const video_btn = el.querySelector('.stone-video');
         video_btn.addEventListener('click',video);
     }
+    let html_check = el.querySelector('.stone-html-check');
     if(opt.html != false){
-        const html_check = el.querySelector('.stone-html-check');
+        html_check = el.querySelector('.stone-html-check');
         html_check.addEventListener('click',html_edit);
     }
 
