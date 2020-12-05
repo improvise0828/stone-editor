@@ -1,12 +1,12 @@
-#stone editor
+# stone editor
 es6 문법으로 작성된 가벼운기능의 에디터입니다.
 스톤에디터는 에디터 생성 명령어와 파라미터 두개면 충분합니다.
 
-##시작하기
+## 시작하기
 누구나 사용할 수 있고 쉽게 분석할 수 있도록 압축하지 않은 파일을 제공합니다.
 다운로드하여 사용해주세요.
 
-##적용하기
+## 적용하기
 스톤에디터는 new_stone_editor 메소드 하나만 가지고 있습니다.
 new_stone_editor 명령어에 에디터를 삽입할 요소의 선택자를 입력해주세요.
 
@@ -14,7 +14,7 @@ new_stone_editor 명령어에 에디터를 삽입할 요소의 선택자를 입�
 
 사용 할 수 있는에디터가 바로 생성됩니다.
 
-##이미지 저장하기
+## 이미지 저장하기
 new_stone_editor 메소드는 이미지를 저장하지 않습니다.
 에디터에 나타나는 이미지는 blob 형태의 임시 주소를 가지고 표시됩니다.
 
@@ -60,5 +60,5 @@ stone-image-uploading 클래스와 data-timestamp를 삭제했습니다.
 	uploading_image.removeAttribute('data-timestamp');
 	uploading_image.src = `서버에서 받은 실제 파일주소`;
 
-##라이선스
+## 라이선스
 MIT
