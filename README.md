@@ -2,16 +2,15 @@
 es6 문법으로 작성된 가벼운기능의 에디터입니다.
 스톤에디터는 에디터 생성 명령어와 파라미터 두개면 충분합니다.
 
-스톤에디터의 버튼아이콘은 fontawesome에 의존성을 가지고있습니다.
-
-Link: [Fontawesome](https://fontawesome.com/)
-의 스타일시트를 html에 포함해주세요.
-
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" integrity="시크릿키" crossorigin="anonymous">
-
 ## 시작하기
 누구나 사용할 수 있고 쉽게 분석할 수 있도록 압축하지 않은 파일을 제공합니다.
 다운로드하여 사용해주세요.
+
+스톤에디터의 버튼아이콘은 fontawesome에 의존성을 가지고있습니다.
+[Fontawesome](https://fontawesome.com/)의 스타일시트를 html에 포함해주세요.
+
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" integrity="시크릿키" crossorigin="anonymous">
+
 
 
 ## 적용하기
@@ -20,7 +19,9 @@ new_stone_editor 명령어에 에디터를 삽입할 요소의 선택자를 입�
 
 	new_stone_editor('선택자')
 
-사용 할 수 있는에디터가 바로 생성됩니다.
+사용가능한 에디터가 바로 생성됩니다.
+
+
 
 ## 이미지 저장하기
 new_stone_editor 메소드는 이미지를 저장하지 않습니다.
@@ -32,6 +33,7 @@ new_stone_editor 메소드는 이미지를 저장하지 않습니다.
 
 이미지의 프리뷰가 작성되면 전달받을 메소드에 이미지파일과 타임스탬프가 json 포맷으로 전달됩니다.
 
+
 각각의 데이터에는 이미지파일과 타임스탬프가 들어있습니다.
 
 	const json_data = {
@@ -41,9 +43,12 @@ new_stone_editor 메소드는 이미지를 저장하지 않습니다.
 	json_datas.push(json_data);
 
 
+
 image_save에 전달된 메소드로 json_datas를 전달하여 실행합니다.
 
 	opt.image_save(json_datas);
+
+
 
 전달한메소드에서는 각각의 타임스탬프와 이미지파일을 이용하여 서버에 저장하도록합니다.
 
@@ -69,4 +74,4 @@ stone-image-uploading 클래스와 data-timestamp를 삭제했습니다.
 	uploading_image.src = `서버에서 받은 실제 파일주소`;
 
 ## 라이선스
-MIT
+[MIT](https://github.com/sveltejs/sapper/blob/master/LICENSE)
