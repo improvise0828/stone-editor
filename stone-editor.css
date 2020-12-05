@@ -43,6 +43,10 @@
     position: relative;
 }
 
+.stone-editor *{
+    box-sizing: border-box;
+}
+
 .stone-content-wrap {
     position: relative;
 }
