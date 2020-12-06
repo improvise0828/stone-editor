@@ -288,6 +288,7 @@ function calc_all_stone_iframe_height(){
 
 function calc_stone_iframe_height(e){
     e.style.height = (e.offsetWidth * 0.5625) + 'px';
+    e.removeAttribute('onload');
 }
 
 function new_stone_editor(selector,opt = {}) {
