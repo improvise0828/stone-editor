@@ -160,9 +160,9 @@
     border: none;
 }
 
-.stone-btn-list .stone-btn button{
+.stone-btn-list .stone-btn *{
     width: 100%;
-    text-align-last: left;
+    text-align: left;
 }
 
 .stone-btn-list>li {
