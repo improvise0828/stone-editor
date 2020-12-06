@@ -402,43 +402,43 @@ const stone_editor_font_size_group = `<span class="stone-btn stone-font-size-gro
 <ul class="stone-btn-list">
     <li>
         <span class="stone-btn">
-            <button class="stone-font-size" data-font-size="2.5rem">
-                <span style="font-size:2.5rem">2.5rem</span>
+            <button class="stone-font-size" data-font-size="2.5em">
+                <span style="font-size:2.5em">2.5em</span>
             </button>
         </span>
     </li>
     <li>
         <span class="stone-btn">
-            <button class="stone-font-size" data-font-size="2rem">
-                <span style="font-size:2rem">2rem</span>
+            <button class="stone-font-size" data-font-size="2em">
+                <span style="font-size:2em">2em</span>
             </button>
         </span>
     </li>
     <li>
         <span class="stone-btn">
-            <button class="stone-font-size" data-font-size="1.75rem">
-                <span style="font-size:1.75rem">1.75rem</span>
+            <button class="stone-font-size" data-font-size="1.75em">
+                <span style="font-size:1.75em">1.75em</span>
             </button>
         </span>
     </li>
     <li>
         <span class="stone-btn">
-            <button class="stone-font-size" data-font-size="1.5rem">
-                <span style="font-size:1.5rem">1.5rem</span>
+            <button class="stone-font-size" data-font-size="1.5em">
+                <span style="font-size:1.5em">1.5em</span>
             </button>
         </span>
     </li>
     <li>
         <span class="stone-btn">
-            <button class="stone-font-size" data-font-size="1.25rem">
-                <span style="font-size:1.25rem">1.25rem</span>
+            <button class="stone-font-size" data-font-size="1.25em">
+                <span style="font-size:1.25em">1.25em</span>
             </button>
         </span>
     </li>
     <li>
         <span class="stone-btn">
-            <button class="stone-font-size" data-font-size="1rem">
-                <span style="font-size:1rem">1rem</span>
+            <button class="stone-font-size" data-font-size="1em">
+                <span style="font-size:1em">1em</span>
             </button>
         </span>
     </li>
