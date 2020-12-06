@@ -138,7 +138,8 @@
 }
 
 .stone-btn:hover .stone-btn-list {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .stone-btn-list {
@@ -147,16 +148,25 @@
     list-style: none;
     padding: 0 !important;
     z-index: 1;
-    background-color: transparent !important;
-}
-
-.stone-btn-list>li {
+    background-color: #fff !important;
+    border-radius: 2px;
+    border: 1px solid #dfdfdf;
     width: fit-content;
 }
 
-.stone-btn-list .stone-btn {
-    border-radius: 2px;
-    border: 1px solid #dfdfdf;
+.stone-btn-list .stone-btn{
+    width: 100%;
+    border-radius: 0;
+    border: none;
+}
+
+.stone-btn-list .stone-btn button{
+    width: 100%;
+    text-align-last: left;
+}
+
+.stone-btn-list>li {
+    width: 100%;
 }
 
 .stone-btn-list .stone-btn button {
