@@ -31,14 +31,15 @@ function stone_editor_init(el,opt){
             font_size_btns[i].addEventListener('click', font_size)
         }
     }
+    const color_input = el.querySelector('.stone-color-input');
+    const hilite_input = el.querySelector('.stone-hilite-input');
     if(opt.color != false){
-        const color_input = el.querySelector('.stone-color-input');
         const color_btn = el.querySelector('.stone-color');
         color_btn.addEventListener('click',color);
         color_btn.querySelector('i').style.color = color_input.value;
         const hilite_btn = el.querySelector('.stone-hilite');
         hilite_btn.addEventListener('click',hilite);
-        hilite_btn.querySelector('i').style.color = color_input.value;
+        hilite_btn.querySelector('i').style.color = hilite_input.value;
     }
     if(opt.font_style != false){
         const bold_btn = el.querySelector('.stone-bold');
@@ -70,9 +71,8 @@ function stone_editor_init(el,opt){
         const video_btn = el.querySelector('.stone-video');
         video_btn.addEventListener('click',video);
     }
-    let html_check = el.querySelector('.stone-html-check');
+    const html_check = el.querySelector('.stone-html-check');
     if(opt.html != false){
-        html_check = el.querySelector('.stone-html-check');
         html_check.addEventListener('click',html_edit);
     }
 
@@ -95,7 +95,7 @@ function stone_editor_init(el,opt){
     }
 
     function hilite(){
-        document.execCommand('hiliteColor',false,color_input.value)
+        document.execCommand('hiliteColor',false,hilite_input.value)
     }
 
     function bold(){
