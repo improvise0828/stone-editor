@@ -75,14 +75,14 @@ image_save에 전달된 메소드로 json_datas를 전달하여 실행합니다.
 
 
 
+적용 예시:
+
 전달한메소드에서는 각각의 타임스탬프와 이미지파일을 이용하여 서버에 저장하도록합니다.
 
 전달한메소드의 예시는 전달받은 json_datas를 반복하여 각각의 파일을 서버로 전송하고,
 전송이 완료된 후 '.stone-image-uploading[data-timestamp="${timestamp}"]' 선택자를 통해 요소를 찾은 후
 stone-image-uploading 클래스와 data-timestamp를 삭제했습니다.
 클래스와 데이터속성은 삭제하지 않아도 괜찮습니다.
-
-적용 예시:
 
 	function 전달한메소드(json_datas){
 		for(let i=0; i<json_datas.length; i++){
