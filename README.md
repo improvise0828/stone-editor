@@ -20,7 +20,11 @@ es6 문법으로 작성된 가벼운기능의 에디터입니다.
 스톤에디터는 new_stone_editor 메소드 하나만 가지고 있습니다.
 new_stone_editor 명령어에 에디터를 삽입할 요소의 선택자를 입력해주세요.
 
-	new_stone_editor('선택자')
+	// html
+	<div class="newEditor">내용</div>
+
+	// js
+	new_stone_editor('newEditor')
 
 사용가능한 에디터가 바로 생성됩니다.
 

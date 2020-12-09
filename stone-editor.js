@@ -293,6 +293,7 @@ function calc_stone_iframe_height(e){
 
 function new_stone_editor(selector,opt = {}) {
     let el = document.querySelector(`${selector}`);
+    let inner_content = el.innerHTML;
     let stone_responsive = ``;
     if(opt.responsive != false){
         stone_responsive = `stone-responsive`
@@ -328,7 +329,7 @@ function new_stone_editor(selector,opt = {}) {
     <div class="stone-editor ${stone_responsive}" title="ESC키로 종료할 수 있습니다.">
         <div class="stone-toolbar">${stone_editor_toobar}</div>
         <div class="stone-content-wrap">
-            <div class="stone-content" contentEditable="true"></div>
+            <div class="stone-content" contentEditable="true">${inner_content}</div>
             <textarea class="stone-html-content stone-hide"></textarea>
         </div>
     </div>
