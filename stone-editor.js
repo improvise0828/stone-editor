@@ -31,9 +31,9 @@ function stone_editor_init(el,opt){
             font_size_btns[i].addEventListener('click', font_size)
         }
     }
-    const color_input = el.querySelector('.stone-color-input');
-    const hilite_input = el.querySelector('.stone-hilite-input');
     if(opt.color != false){
+        const color_input = el.querySelector('.stone-color-input');
+        const hilite_input = el.querySelector('.stone-hilite-input');
         const color_btn = el.querySelector('.stone-color');
         color_btn.addEventListener('click',color);
         color_btn.querySelector('i').style.color = color_input.value;
