@@ -103,4 +103,4 @@ stone-image-uploading 클래스와 data-timestamp를 삭제했습니다.
 	uploading_image.src = `서버에서 받은 실제 파일주소`;
 
 ## 라이선스
-[MIT](https://github.com/sveltejs/sapper/blob/master/LICENSE)
+[MIT](https://github.com/madstone-dev/stone-editor/blob/master/LICENSE.md)
