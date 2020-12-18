@@ -161,7 +161,7 @@ function stone_editor_init(el,opt){
 
         let image_input = document.createElement('input');
         image_input.setAttribute('type', 'file');
-        image_input.setAttribute('accept', '.gif, .jpg, .png, .jpeg');
+        image_input.setAttribute('accept', 'image/*');
         image_input.setAttribute('class', 'stone-temp-image-input stone-hide');
         image_input.setAttribute('multiple', true);
         document.body.append(image_input); // for ios
@@ -333,7 +333,7 @@ function new_stone_editor(selector,opt = {}) {
             <textarea class="stone-html-content stone-hide"></textarea>
         </div>
     </div>
-    <input class=stone-exit>`
+    <input class="stone-exit" title="에디터의 끝부분입니다. TAB키로 다음 영역으로 이동하세요.">`
 
     el.innerHTML = stone_editor_layout;
     stone_editor_init(el,opt);
