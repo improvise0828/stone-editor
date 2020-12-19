@@ -14,66 +14,75 @@ function stone_editor_init(el,opt){
         }
     })
     content.addEventListener('keyup',clone_content);
-    content.addEventListener('click',image_alt_edit);
     content.addEventListener('focus',()=>{is_focus = true});
     content.addEventListener('focusout',()=>{is_focus = false});
-    const html_content = el.querySelector('.stone-html-content');
-    html_content.addEventListener('keyup',clone_html_content);
+    if(opt.image_alt != false){
+        content.addEventListener('keydown',(e)=>{
+            if(e.target.tagName === 'TEXTAREA'){
+                image_alt_change();
+            }else{
+                image_alt_destroy();
+            }
+        });
+        content.addEventListener('click',image_alt_edit);
+    }
+    const heading_btns = el.querySelectorAll('.stone-heading');
     if(opt.heading != false){
-        const heading_btns = el.querySelectorAll('.stone-heading');
         for(let i=0; i<heading_btns.length; i++){
             heading_btns[i].addEventListener('click', heading)
         }
     }
+    const font_size_btns = el.querySelectorAll('.stone-font-size');
     if(opt.font_size != false){
-        const font_size_btns = el.querySelectorAll('.stone-font-size');
         for(let i=0; i<font_size_btns.length; i++){
             font_size_btns[i].addEventListener('click', font_size)
         }
     }
+    const color_input = el.querySelector('.stone-color-input');
+    const hilite_input = el.querySelector('.stone-hilite-input');
+    const color_btn = el.querySelector('.stone-color');
+    const hilite_btn = el.querySelector('.stone-hilite');
     if(opt.color != false){
-        const color_input = el.querySelector('.stone-color-input');
-        const hilite_input = el.querySelector('.stone-hilite-input');
-        const color_btn = el.querySelector('.stone-color');
         color_btn.addEventListener('click',color);
         color_btn.querySelector('i').style.color = color_input.value;
-        const hilite_btn = el.querySelector('.stone-hilite');
         hilite_btn.addEventListener('click',hilite);
         hilite_btn.querySelector('i').style.color = hilite_input.value;
     }
+    const bold_btn = el.querySelector('.stone-bold');
+    const italic_btn = el.querySelector('.stone-italic');
+    const underline_btn = el.querySelector('.stone-underline');
+    const stroke_btn = el.querySelector('.stone-stroke');
     if(opt.font_style != false){
-        const bold_btn = el.querySelector('.stone-bold');
         bold_btn.addEventListener('click',bold);
-        const italic_btn = el.querySelector('.stone-italic');
         italic_btn.addEventListener('click',italic);
-        const underline_btn = el.querySelector('.stone-underline');
         underline_btn.addEventListener('click',underline);
-        const stroke_btn = el.querySelector('.stone-stroke');
         stroke_btn.addEventListener('click',stroke);
     }
+    const unorderd_list_btn = el.querySelector('.stone-ul');
+    const orderd_list_btn = el.querySelector('.stone-ol');
     if(opt.list != false){
-        const unorderd_list_btn = el.querySelector('.stone-ul');
         unorderd_list_btn.addEventListener('click',unorderdList)
-        const orderd_list_btn = el.querySelector('.stone-ol');
         orderd_list_btn.addEventListener('click',orderdList);
     }
+    const align_btns = el.querySelectorAll('.stone-align');
     if(opt.align != false){
-        const align_btns = el.querySelectorAll('.stone-align');
         for(let i=0; i<align_btns.length; i++){
             align_btns[i].addEventListener('click', align)
         }
     }
+    const link_btn = el.querySelector('.stone-link');
+    const image_btn = el.querySelector('.stone-image');
+    const video_btn = el.querySelector('.stone-video');
     if(opt.attachment != false){
-        const link_btn = el.querySelector('.stone-link');
         link_btn.addEventListener('click',link);
-        const image_btn = el.querySelector('.stone-image');
         image_btn.addEventListener('click',stone_image_input_create);
-        const video_btn = el.querySelector('.stone-video');
         video_btn.addEventListener('click',video);
     }
+    const html_check = el.querySelector('.stone-html-check');
+    const html_content = el.querySelector('.stone-html-content');
     if(opt.html != false){
-        const html_check = el.querySelector('.stone-html-check');
         html_check.addEventListener('click',html_edit);
+        html_content.addEventListener('keyup',clone_html_content);
     }
 
     function heading(e) {
@@ -207,8 +216,10 @@ function stone_editor_init(el,opt){
     }
 
     function image_alt_edit(e){
-        const old_textarea = document.querySelector('.stone-image-alt');
-        old_textarea && old_textarea.remove();
+        if(e.target.tagName !== 'TEXTAREA'){
+            const old_textarea = document.querySelector('.stone-image-alt');
+            old_textarea && old_textarea.remove();
+        }
         if(e.target.tagName === 'IMG'){
             e.target.classList.add('stone-alt-editing')
             let textarea = document.createElement('textarea');
@@ -221,8 +232,6 @@ function stone_editor_init(el,opt){
             e.target.after(textarea);
             let textarea_height = textarea.scrollHeight;
             textarea.style.height = textarea_height + 'px';
-            textarea.focus()
-            textarea.setSelectionRange(textarea.value.length, textarea.value.length);
         }
     }
 
@@ -232,9 +241,16 @@ function stone_editor_init(el,opt){
     }
 
     function image_alt_change(e){
-        let text_content = e.target.value;
         let alt_editing = content.querySelector('.stone-alt-editing')
+        let text_content = e.target.value;
         alt_editing.alt = text_content
+        alt_editing.classList.remove('stone-alt-editing')
+        const old_textarea = document.querySelector('.stone-image-alt');
+        old_textarea && old_textarea.remove();
+    }
+
+    function image_alt_destroy(){
+        let alt_editing = content.querySelector('.stone-alt-editing')
         alt_editing.classList.remove('stone-alt-editing')
         const old_textarea = document.querySelector('.stone-image-alt');
         old_textarea && old_textarea.remove();

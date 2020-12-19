@@ -256,9 +256,18 @@
     font-weight: 400;
     padding: 8px;
     background-color: rgba(0,0,0,0.05);
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    resize: auto;
+    border: 2px solid #eee;
+    border-radius: 0px;
+    resize: vertical;
+    margin-top: calc(-0.25rem - 1px);
+    -webkit-appearance: none;
+    -webkit-border-radius:none;
+}
+
+.stone-image-alt:focus,
+.stone-image-alt:active{
+    outline: none;
+    border: 2px solid #5629ee;
 }
 
 .stone-image-alt::placeholder {
