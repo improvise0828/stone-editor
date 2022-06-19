@@ -45,7 +45,7 @@ new_stone_editor 메소드의 두번째 인자에 옵션을 추가하세요. 필
 		list:false, // 리스트
 		align:false, // 정렬
 		attachment:false, // 첨부요소
-		image_alt, // 이미지 설명글
+		image_alt:false, // 이미지 설명글
 		html:false // html 모드
 	})
 
